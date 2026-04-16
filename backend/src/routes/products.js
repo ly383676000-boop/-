@@ -1,104 +1,91 @@
 const express = require('express');
 const router = express.Router();
-const { runQuery, runInsert, getDB } = require('../db/init');
+const db = require('../db/memory');
 
 // Get all products
 router.get('/', (req, res) => {
   try {
-    const products = runQuery(`
-      SELECT p.*, 
-        (SELECT COUNT(*) FROM product_variants WHERE product_id = p.id) as variant_count,
-        (SELECT GROUP_CONCAT(DISTINCT color) FROM product_variants WHERE product_id = p.id AND color IS NOT NULL AND color != '') as variant_colors
-      FROM products p
-      ORDER BY p.created_at DESC
-    `);
-    res.json(products || []);
+    const products = db.getAllProducts();
+    // Wrap in success format for frontend compatibility
+    res.json({
+      success: true,
+      data: products
+    });
   } catch (err) {
     console.error('Error fetching products:', err);
-    res.status(500).json({ error: 'Failed to fetch products' });
+    res.status(500).json({ success: false, error: 'Failed to fetch products' });
   }
 });
 
-// Get single product with variants
+// Get single product
 router.get('/:id', (req, res) => {
   try {
-    const product = runQuery('SELECT * FROM products WHERE id = ?', [req.params.id]);
-    if (!product || product.length === 0) {
-      return res.status(404).json({ error: 'Product not found' });
+    const product = db.getProductById(req.params.id);
+    if (!product) {
+      return res.status(404).json({ success: false, error: 'Product not found' });
     }
-    const variants = runQuery('SELECT * FROM product_variants WHERE product_id = ?', [req.params.id]);
-    res.json({ ...product[0], variants: variants || [] });
+    const variants = db.getVariantsByProductId(req.params.id);
+    res.json({
+      success: true,
+      data: { ...product, variants }
+    });
   } catch (err) {
     console.error('Error fetching product:', err);
-    res.status(500).json({ error: 'Failed to fetch product' });
+    res.status(500).json({ success: false, error: 'Failed to fetch product' });
   }
 });
 
 // Create product
 router.post('/', (req, res) => {
   try {
-    const {
-      name, name_en, brand, description, description_en, price, image_url, category,
-      colors, sizes, specifications, materials,
-      custom1_name, custom1_values, custom2_name, custom2_values, custom3_name, custom3_values
-    } = req.body;
+    const { name, nameEn, brand, description, descriptionEn, price, image, category } = req.body;
 
     if (!name || !price) {
-      return res.status(400).json({ error: 'Name and price are required' });
+      return res.status(400).json({ success: false, error: 'Name and price are required' });
     }
 
-    const id = runInsert(
-      `INSERT INTO products (name, name_en, brand, description, description_en, price, image_url, category,
-        colors, sizes, specifications, materials,
-        custom1_name, custom1_values, custom2_name, custom2_values, custom3_name, custom3_values)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-      [name, name_en, brand, description, description_en, price, image_url, category,
-       colors, sizes, specifications, materials,
-       custom1_name, custom1_values, custom2_name, custom2_values, custom3_name, custom3_values]
-    );
+    const newProduct = db.addProduct({
+      name, nameEn, brand, description, descriptionEn, price, image, category,
+      colors: req.body.colors || [],
+      sizes: req.body.sizes || [],
+      specifications: req.body.specifications || [],
+      materials: req.body.materials || [],
+      sku: req.body.sku || '',
+      stock: req.body.stock || 100
+    });
 
-    res.json({ id, message: 'Product created successfully' });
+    res.json({ success: true, data: newProduct, message: 'Product created successfully' });
   } catch (err) {
     console.error('Error creating product:', err);
-    res.status(500).json({ error: 'Failed to create product' });
+    res.status(500).json({ success: false, error: 'Failed to create product' });
   }
 });
 
 // Update product
 router.put('/:id', (req, res) => {
   try {
-    const {
-      name, name_en, brand, description, description_en, price, image_url, category,
-      colors, sizes, specifications, materials,
-      custom1_name, custom1_values, custom2_name, custom2_values, custom3_name, custom3_values
-    } = req.body;
-
-    runInsert(
-      `UPDATE products SET name=?, name_en=?, brand=?, description=?, description_en=?, price=?, image_url=?, category=?,
-        colors=?, sizes=?, specifications=?, materials=?,
-        custom1_name=?, custom1_values=?, custom2_name=?, custom2_values=?, custom3_name=?, custom3_values=?
-       WHERE id=?`,
-      [name, name_en, brand, description, description_en, price, image_url, category,
-       colors, sizes, specifications, materials,
-       custom1_name, custom1_values, custom2_name, custom2_values, custom3_name, custom3_values, req.params.id]
-    );
-
-    res.json({ message: 'Product updated successfully' });
+    const updated = db.updateProduct(req.params.id, req.body);
+    if (!updated) {
+      return res.status(404).json({ success: false, error: 'Product not found' });
+    }
+    res.json({ success: true, data: updated, message: 'Product updated successfully' });
   } catch (err) {
     console.error('Error updating product:', err);
-    res.status(500).json({ error: 'Failed to update product' });
+    res.status(500).json({ success: false, error: 'Failed to update product' });
   }
 });
 
 // Delete product
 router.delete('/:id', (req, res) => {
   try {
-    runInsert('DELETE FROM product_variants WHERE product_id = ?', [req.params.id]);
-    runInsert('DELETE FROM products WHERE id = ?', [req.params.id]);
-    res.json({ message: 'Product deleted successfully' });
+    const deleted = db.deleteProduct(req.params.id);
+    if (!deleted) {
+      return res.status(404).json({ success: false, error: 'Product not found' });
+    }
+    res.json({ success: true, message: 'Product deleted successfully' });
   } catch (err) {
     console.error('Error deleting product:', err);
-    res.status(500).json({ error: 'Failed to delete product' });
+    res.status(500).json({ success: false, error: 'Failed to delete product' });
   }
 });
 
