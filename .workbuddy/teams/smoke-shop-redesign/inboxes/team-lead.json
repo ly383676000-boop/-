@@ -1,0 +1,38 @@
+[
+  {
+    "id": "msg-1775921301890-lv0ej3",
+    "from": "ui-redesigner",
+    "to": "team-lead",
+    "type": "message",
+    "content": "UI设计规范V2已完成\n\n已完成的设计规范更新内容：\n\n**配色方案升级**\n- 主色：深墨绿 #1B4332 / 深蓝绿 #0D3B3B\n- 强调色：琥珀金 #D4A574 / 深金色 #C9A227（替代橙色）\n- 移除所有荧光色和高饱和度颜色\n\n**字体系统**\n- 标题：Poppins Bold\n- 正文：Inter\n- 价格：Roboto Mono（等宽专业感）\n\n**新增公司LOGO设计规范**\n- 完整LOGO设计示例\n- 深色/浅色背景变体\n- 字体、颜色、尺寸规范\n\n**产品卡片优化**\n- 精致阴影效果（从浅到深的悬停变化）\n- Hover效果：上浮4px + 阴影加深 + 图片微缩放\n- 3:4垂直图片比例\n\n**其他优化**\n- 导航栏高度72px优化\n- Hero Banner设计规范\n- 公司优势展示区块\n- 完整的响应式设计规范\n- 无障碍设计指南\n\n设计规范文件已保存至：SPEC.md",
+    "timestamp": "2026-04-11T15:28:21.890Z",
+    "read": true
+  },
+  {
+    "id": "msg-1775921450537-d3c234",
+    "from": "frontend-redesigner",
+    "to": "team-lead",
+    "type": "message",
+    "content": "前端重写完成！\n\n## 完成内容\n\n### 1. 设计系统更新\n- 主色调：深绿色 (#1B4332)\n- 强调色：橙色 (#FF8C00)\n- 背景色：白色/浅灰 (#FFFFFF / #F8F9FA)\n- 新增卡片悬停动效、按钮状态、阴影效果\n\n### 2. 组件重写\n- **Header**: 深绿色背景，Logo + 公司名称 + 搜索框 + 语言切换 + 购物车（带徽章动画）\n- **ProductCard**: 白色卡片，精致阴影，hover scale 效果，颜色选择圆点\n- **ProductGrid**: 响应式网格布局 (1/2/3/4列)\n- **Cart**: 右侧滑出购物车，深绿色头部，完整客户表单\n- **ProductDetail**: 产品详情页，图片画廊，变体选择器\n- **VariantSelector**: 圆形颜色选择器 + 胶囊尺寸按钮 + 下拉选择器\n- **CustomerForm**: 完整客户信息表单（姓名、邮箱、电话、地址等）\n- **QuantitySelector**: 现代化数量选择器\n\n### 3. 首页重写\n- Hero 区域：渐变深绿色背景\n- 产品分类快捷入口\n- 响应式产品网格\n- 底部功能特性展示\n- 完整 Footer 设计\n\n### 4. PDF 订单生成更新\n- 使用新的绿色主题配色\n- 公司信息头部设计\n- 订单信息卡片\n- 客户信息表格\n- 产品明细表（SKU、变体、数量、单价、总价）\n- 总计金额高亮显示\n\n### 5. 中英文翻译\n- 更新 i18n 文件\n- 新增 wishlist 和 share 翻译\n\n所有组件已按照高端外贸风格重写，可在 http://localhost:3000 预览。",
+    "timestamp": "2026-04-11T15:30:50.537Z",
+    "read": true
+  },
+  {
+    "id": "resp-1775921581326-2fqpxt",
+    "from": "ui-redesigner",
+    "to": "team-lead",
+    "type": "shutdown_response",
+    "content": "{\"type\":\"shutdown_response\",\"request_id\":\"shutdown-1775921571571\",\"approve\":true,\"from\":\"ui-redesigner\",\"timestamp\":\"2026-04-11T15:33:01.326Z\"}",
+    "timestamp": "2026-04-11T15:33:01.326Z",
+    "read": true
+  },
+  {
+    "id": "resp-1775921581735-91he99",
+    "from": "frontend-redesigner",
+    "to": "team-lead",
+    "type": "shutdown_response",
+    "content": "{\"type\":\"shutdown_response\",\"request_id\":\"shutdown-1775921572362\",\"approve\":true,\"from\":\"frontend-redesigner\",\"timestamp\":\"2026-04-11T15:33:01.735Z\"}",
+    "timestamp": "2026-04-11T15:33:01.735Z",
+    "read": true
+  }
+]

@@ -1,0 +1,186 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #1B4332;
+  --primary-dark: #2D5016;
+  --primary-light: #40916C;
+  --accent: #FF8C00;
+  --accent-dark: #E67E00;
+  --gold: #D4A574;
+  --bg-light: #F8F9FA;
+  --bg-white: #FFFFFF;
+  --text-dark: #1A1A1A;
+  --text-body: #333333;
+  --text-secondary: #666666;
+  --text-muted: #999999;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Inter, system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer components {
+  /* Primary Button - Deep Green */
+  .btn-primary {
+    @apply bg-[#1B4332] text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200;
+  }
+  .btn-primary:hover {
+    @apply bg-[#2D5016] shadow-lg;
+  }
+  .btn-primary:active {
+    @apply scale-[0.98];
+  }
+
+  /* Accent Button - Orange */
+  .btn-accent {
+    @apply bg-[#FF8C00] text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200;
+  }
+  .btn-accent:hover {
+    @apply bg-[#E67E00] shadow-lg;
+  }
+  .btn-accent:active {
+    @apply scale-[0.98];
+  }
+
+  /* Secondary Button */
+  .btn-secondary {
+    @apply bg-transparent text-[#1B4332] border-2 border-[#1B4332] px-5 py-2 rounded-lg font-semibold transition-all duration-200;
+  }
+  .btn-secondary:hover {
+    @apply bg-[#1B4332] text-white;
+  }
+
+  /* Ghost Button */
+  .btn-ghost {
+    @apply bg-transparent text-[#333333] px-4 py-2 rounded-lg transition-all duration-200;
+  }
+  .btn-ghost:hover {
+    @apply bg-[#F5F5F5];
+  }
+
+  /* Card Component */
+  .card {
+    @apply bg-white rounded-xl border border-[#E5E5E5] overflow-hidden transition-all duration-300;
+  }
+  .card:hover {
+    @apply shadow-lg scale-[1.02];
+  }
+
+  /* Input Field */
+  .input-field {
+    @apply w-full px-4 py-3 border border-[#CCCCCC] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1B4332] focus:border-transparent transition-all duration-200;
+  }
+  .input-field::placeholder {
+    @apply text-[#999999];
+  }
+
+  /* Section Title */
+  .section-title {
+    @apply text-2xl font-semibold text-[#1A1A1A] mb-6;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
+  }
+  .badge-primary {
+    @apply bg-[#1B4332] text-white;
+  }
+  .badge-accent {
+    @apply bg-[#FF8C00] text-white;
+  }
+
+  /* Price Tag */
+  .price-tag {
+    @apply text-xl font-bold text-[#FF8C00];
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CCCCCC;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #999999;
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.3s ease-out forwards;
+}
+
+.animate-slideOutRight {
+  animation: slideOutRight 0.3s ease-out forwards;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}

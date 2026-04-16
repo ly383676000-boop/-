@@ -1,0 +1,33 @@
+{
+  "name": "smoke-shop-dev",
+  "leadAgentId": "cfb396508d934312a52593781bed627d",
+  "workspacePath": "c:/Users/Administrator/WorkBuddy/20260411184422",
+  "createdAt": "2026-04-11T12:19:53.800Z",
+  "options": {
+    "workspacePath": "c:/Users/Administrator/WorkBuddy/20260411184422",
+    "isAutoTeam": false
+  },
+  "members": [
+    {
+      "memberId": "team-lead@smoke-shop-dev",
+      "name": "team-lead",
+      "role": "Team Lead - coordinates the team and interacts with the user"
+    },
+    {
+      "memberId": "ui-designer@smoke-shop-dev",
+      "name": "ui-designer",
+      "role": "UI设计-烟具外贸网站"
+    },
+    {
+      "memberId": "frontend-dev@smoke-shop-dev",
+      "name": "frontend-dev",
+      "role": "前端开发-烟具购物网站"
+    },
+    {
+      "memberId": "backend-dev@smoke-shop-dev",
+      "name": "backend-dev",
+      "role": "后端开发-烟具购物API"
+    }
+  ],
+  "isAutoTeam": false
+}

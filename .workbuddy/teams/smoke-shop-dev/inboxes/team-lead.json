@@ -1,0 +1,20 @@
+[
+  {
+    "id": "msg-1775910161529-lpoeut",
+    "from": "ui-designer",
+    "to": "team-lead",
+    "type": "message",
+    "content": "UI设计规范已完成，文件在 SPEC.md\n\n设计规范包含以下内容：\n\n## 视觉设计系统\n- **配色方案**: 深绿主色(#1B4332)、墨绿深色(#2D5016)、活力橙强调色(#FF8C00)、金色(#D4A574)\n- **字体系统**: Inter为主字体，完整字体层级定义\n- **间距系统**: 8px基础单位，完整的间距和圆角规范\n\n## 布局结构\n- 顶部固定导航栏 (深绿背景，Logo+搜索+购物车+语言切换)\n- 响应式产品网格 (4/2/1列适配桌面/平板/手机)\n- 侧边滑出式购物车 (400px宽度)\n- 深绿色页脚\n\n## 组件设计\n- 产品卡片: 图片+品牌+名称+价格+颜色选项\n- 变体选择器: 颜色/尺寸/规格/材质选择\n- 购物车图标: 带数量徽章\n- 按钮样式: Primary/Accent/Secondary/Ghost四种\n- 语言切换器: 中/EN下拉菜单\n\n## 中英文对照表\n包含完整的词汇对照：\n- 导航与通用 (Home/首页, Cart/购物车等)\n- 产品相关 (Product/产品, Color/颜色, Size/尺寸, Material/材质等)\n- 购物车与结算 (Confirm Order/确认订单, Download Order/下载订单等)\n- 烟具专业词汇 (Smoke Pipe/烟斗, Bong/水烟壶, Grinder/研磨器等)\n\n## 其他规范\n- 响应式设计断点\n- 交互动效规范\n- Lucide Icons图标映射\n- 图片尺寸规范\n\n请查看 SPEC.md 文件获取完整内容。",
+    "timestamp": "2026-04-11T12:22:41.529Z",
+    "read": true
+  },
+  {
+    "id": "msg-1775910467164-e69m9d",
+    "from": "frontend-dev",
+    "to": "team-lead",
+    "type": "message",
+    "content": "前端开发完成。\n\n## 项目结构\n```\nfrontend/\n├── src/\n│   ├── components/\n│   │   ├── Header.tsx (导航栏：Logo、搜索、语言切换、购物车)\n│   │   ├── ProductCard.tsx (产品卡片)\n│   │   ├── ProductGrid.tsx (产品网格)\n│   │   ├── ProductDetail.tsx (产品详情页)\n│   │   ├── VariantSelector.tsx (变体选择器：颜色/尺寸/规格/材质/自定义参数)\n│   │   ├── QuantitySelector.tsx (数量选择器)\n│   │   ├── CustomerForm.tsx (客户信息表单)\n│   │   └── Cart.tsx (侧边购物车)\n│   ├── context/\n│   │   ├── LanguageContext.tsx (中英文切换)\n│   │   └── CartContext.tsx (购物车状态管理)\n│   ├── i18n/\n│   │   ├── en.ts (英文)\n│   │   └── zh.ts (中文)\n│   ├── pages/\n│   │   ├── Home.tsx (首页)\n│   │   └── ProductPage.tsx (产品详情页)\n│   ├── utils/\n│   │   └── generatePDF.ts (PDF订单生成)\n│   ├── data/\n│   │   └── products.ts (示例产品数据)\n│   ├── types/\n│   │   └── index.ts (TypeScript类型定义)\n│   ├── App.tsx\n│   └── main.tsx\n├── package.json\n├── vite.config.ts\n├── tsconfig.json\n└── index.html\n```\n\n## 已实现功能\n1. ✅ 首页/产品列表页 - 产品网格展示，品牌名、名称、价格、颜色选项\n2. ✅ 产品详情页 - 图片展示、变体选择器(颜色/尺寸/规格/材质/3个自定义参数/备注)、数量选择\n3. ✅ 购物车 - 侧边滑出式、修改数量、删除产品、显示总价\n4. ✅ 客户表单 - 姓名、地址、电话、邮编\n5. ✅ PDF订单生成 - 使用jsPDF，包含公司名称、订单日期、客户信息、产品列表、总金额\n6. ✅ 中英文切换 - 语言切换保留在所有页面\n\n## 技术栈\n- React 18 + TypeScript\n- Vite (构建工具)\n- Tailwind CSS v4\n- React Router DOM v7\n- jsPDF v4\n- lucide-react (图标)\n\n## 运行\n开发服务器已在 http://localhost:3000 运行",
+    "timestamp": "2026-04-11T12:27:47.164Z",
+    "read": true
+  }
+]

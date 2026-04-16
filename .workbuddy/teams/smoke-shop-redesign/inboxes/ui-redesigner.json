@@ -1,0 +1,11 @@
+[
+  {
+    "id": "shutdown-1775921571571",
+    "from": "team-lead",
+    "to": "ui-redesigner",
+    "type": "shutdown_request",
+    "content": "{\"type\":\"shutdown_request\",\"request_id\":\"shutdown-1775921571571\",\"reason\":\"UI设计规范已完成，请关闭。\",\"from\":\"team-lead\",\"timestamp\":\"2026-04-11T15:32:51.571Z\"}",
+    "timestamp": "2026-04-11T15:32:51.571Z",
+    "read": true
+  }
+]

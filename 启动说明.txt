@@ -1,0 +1,70 @@
+# 烟具外贸购物网站 - 启动说明
+
+## 🚀 一键启动
+
+**双击运行**: `启动网站.bat`
+
+这会自动：
+1. 关闭旧进程
+2. 启动后端服务器 (端口 3001)
+3. 启动前端服务器 (端口 3000)
+
+---
+
+## 📍 访问地址
+
+| 服务 | 地址 |
+|------|------|
+| **购物网站** | http://localhost:3000 |
+| **管理后台** | http://localhost:3000/admin.html |
+| **后端API** | http://localhost:3001/api |
+
+---
+
+## 🔧 手动启动 (备用方案)
+
+### 后端
+```bash
+cd c:\Users\Administrator\WorkBuddy\20260411184422\backend
+npm start
+```
+
+### 前端
+```bash
+cd c:\Users\Administrator\WorkBuddy\20260411184422\frontend
+npm run dev
+```
+
+---
+
+## 📁 项目结构
+
+```
+c:\Users\Administrator\WorkBuddy\20260411184422\
+├── 启动网站.bat          # ⭐ 一键启动脚本
+├── SPEC.md              # 设计规范
+├── frontend/            # 前端 (React)
+│   ├── src/             # 源代码
+│   ├── admin.html      # 管理后台
+│   └── package.json
+└── backend/             # 后端 (Node.js)
+    ├── src/
+    │   ├── routes/      # API路由
+    │   └── db/          # 数据库
+    └── package.json
+```
+
+---
+
+## ⚠️ 注意事项
+
+1. **首次启动**可能需要几分钟安装依赖
+2. 确保端口 3000 和 3001 未被占用
+3. 管理后台用于添加产品和生成SKU
+
+---
+
+## 🔑 联系方式
+
+HONG KONG COOKIES TRADING LIMITED
+WhatsApp: [请在 Header.tsx 中填写]
