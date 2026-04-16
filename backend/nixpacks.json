@@ -1,0 +1,11 @@
+{
+  "name": "smoke-shop-backend",
+  "version": "22",
+  "variants": {
+    "node": {
+      "commands": ["npm install", "npm start"],
+      "buildCommand": "npm install",
+      "startCommand": "npm start"
+    }
+  }
+}
